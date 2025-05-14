@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "defines": [
+                "DEBUG",
+                "_DEBUG",
+                "_DLIB_FILE_DESCRIPTOR",
+                "USE_STDPERIPH_DRIVER"
+            ],
+            "includePath": [
+                "${workspaceFolder}/**",
+                "$PROJ_DIR$/..",
+                "${workspaceFolder}/MM32F0160_Device/CMSIS/IAR_CORE",
+                "${workspaceFolder}/MM32F0160_Device/MM32F0160/HAL_lib/inc",
+                "${workspaceFolder}/MM32F0160_Device/MM32F0160/Source/IAR_StartAsm",
+                "${workspaceFolder}/MM32F0160_Device/MM32F0160/Include"
+            ],
+            "intelliSenseMode": "windows-msvc-x64",
+            "compilerPath": "C:/path/to/your/compiler"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,65 @@
+/**********************************************************
+XW0011项目——分控板——主控资源分配描述览表
+
+资源分配：
+
+外设功能	外设名称	功能引脚	测试点位	引脚定义	描述
+调试端口	
+			SWD			DIO						
+						CLK						
+通讯端口	
+			ZKB485		TX2						PA2
+						RX2						PA3
+						ZKRE					PA6
+						FKRE					PB2
+			DJB485		TX1						PB6
+						RX1						PB7
+						RE						PB5
+						ZKTX01					PA7
+						FKTX01					PB1
+						FKRX01					PB0
+			DEBUG_TTL	LPTX1					PA4
+						LPRX1					PA5
+ID配置		
+			ID_DJB_IN	DI						PB8
+			ID_X		8						PA8
+						4						PA9
+						2						PA10
+						1						PA11
+			ID_Y		8						PA12
+						4						PA15
+						2						PB3
+						1						PB4
+指示灯/按键	
+			LED			D2						PD5
+						D3						PA1
+			KEY			K1						PA0
+
+主频：75M  晶体8M
+
+启用外设：
+
+LPUART	(38.4Kbps)
+ TX			: PA4
+ RX			: PA5
+
+UART1	(38.4Kbps)
+ TX			: PB6
+ RX			: PB7
+ RE			: PB5
+
+UART2	(5Mbps)
+ TX			: PA2
+ RX			: PA3
+
+GPIO
+ KEY		: RA0
+ D2			: RB5
+ D3			: RC1
+ ZKRE		: RB2
+ FKRE		: RB3 
+ ZKTX01		: RB6
+ FKTX01		: RB7
+ FKRX01		: RA3
+ ID_X		：PA8 PA9 PA10 PA11	
+ ID_Y		：PA12 PA15 PB3 PB4	
