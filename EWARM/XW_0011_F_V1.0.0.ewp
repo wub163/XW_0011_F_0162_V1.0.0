@@ -225,7 +225,7 @@
                 </option>
                 <option>
                     <name>CCPreprocFile</name>
-                    <state>1</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>CCPreprocComments</name>
@@ -775,7 +775,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$TOOLKIT_DIR$\CONFIG\generic.icf</state>
+                    <state>$TOOLKIT_DIR$\config\linker\MindMotion\MM32F0160\MM32F0163D\MM32F0163D.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
