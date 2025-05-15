@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "mm32_device.h": "c",
-        "mm32f0160.h": "c"
+        "mm32f0160.h": "c",
+        "platform.h": "c"
     },
     "files.encoding": "gbk",
     "files.autoGuessEncoding": false

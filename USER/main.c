@@ -34,23 +34,30 @@
 #include "main.h"
 
 /**
-  * @addtogroup MM32F0160_LibSamples
-  * @{
-  */
+ * @addtogroup MM32F0160_LibSamples
+ * @{
+ */
 
 /**
-  * @addtogroup UART
-  * @{
-  */
+ * @addtogroup UART
+ * @{
+ */
 
 /**
-  * @addtogroup UART_DMA_Interrupt
-  * @{
-  */
+ * @addtogroup UART_DMA_Interrupt
+ * @{
+ */
 
 /* Private typedef ****************************************************************************************************/
 
 /* Private define *****************************************************************************************************/
+extern volatile u32 SysTickCount;
+volatile FLAG8 sys_flag;
+#define f_systick_loop sys_flag.bits.bit0 // 主系统循环标识位。
+#define f_moto_loop sys_flag.bits.bit1    // 编码器服务循环标识位。
+#define f_uart_loop sys_flag.bits.bit2    // 串口服务循环标识位。
+#define f_led_loop sys_flag.bits.bit3     // 状态服务循环标识位。
+#define f_systick_bad sys_flag.bits.bit4     // 状态服务循环标识位。
 
 /* Private macro ******************************************************************************************************/
 
@@ -59,33 +66,59 @@
 /* Private functions **************************************************************************************************/
 
 /***********************************************************************************************************************
-  * @brief  This function is main entrance
-  * @note   main
-  * @param  none
-  * @retval none
-  *********************************************************************************************************************/
+ * @brief  This function is main entrance
+ * @note   main
+ * @param  none
+ * @retval none
+ *********************************************************************************************************************/
 int main(void)
 {
-    PLATFORM_Init();
+  PLATFORM_Init();
 
-    UART_DMA_Interrupt_Sample();
+ // UART_DMA_Interrupt_Sample();
 
-    while (1)
+  while (1)
+  {
+    f_systick_bad = 0;
+    if (((SysTickCount % 10) == 0) && (f_systick_loop)) // 20ms处理一次位置反馈任务
     {
+    if (f_systick_bad)continue;	   // 如果系统循环参数失效，跳过本次循环
+      f_systick_loop = 0; // 清除时钟标志位
     }
+
+    if (((SysTickCount % 20) == 0) && (f_moto_loop)) // 20ms处理一次位置反馈任务
+    {
+    if (f_systick_bad)continue;	   // 如果系统循环参数失效，跳过本次循环
+      f_moto_loop = 0; // 清除时钟标志位
+    }
+
+    if (((SysTickCount % 100) == 0) && (f_uart_loop)) // 20ms处理一次位置反馈任务
+    {
+    if (f_systick_bad)continue;	   // 如果系统循环参数失效，跳过本次循环
+      f_uart_loop = 0; // 清除时钟标志位
+      tog(D3);
+    }
+
+    if (((SysTickCount % 500) == 0) && (f_led_loop)) // 20ms处理一次位置反馈任务
+    {
+    if (f_systick_bad)continue;	   // 如果系统循环参数失效，跳过本次循环
+      f_led_loop = 0; // 清除时钟标志位
+
+      tog(D2);
+    }
+  }
 }
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /********************************************** (C) Copyright MindMotion **********************************************/
-

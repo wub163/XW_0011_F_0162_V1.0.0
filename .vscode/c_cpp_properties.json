@@ -10,11 +10,12 @@
             ],
             "includePath": [
                 "${workspaceFolder}/**",
-                "$PROJ_DIR$/..",
                 "${workspaceFolder}/MM32F0160_Device/CMSIS/IAR_CORE",
                 "${workspaceFolder}/MM32F0160_Device/MM32F0160/HAL_lib/inc",
                 "${workspaceFolder}/MM32F0160_Device/MM32F0160/Source/IAR_StartAsm",
-                "${workspaceFolder}/MM32F0160_Device/MM32F0160/Include"
+                "${workspaceFolder}/MM32F0160_Device/MM32F0160/Include",
+                "${workspaceFolder}/USER",
+                "${workspaceFolder}/APP"
             ],
             "intelliSenseMode": "windows-msvc-x64",
             "compilerPath": "C:/path/to/your/compiler"

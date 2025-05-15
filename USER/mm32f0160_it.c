@@ -30,23 +30,24 @@
 #define _MM32F0160_IT_C_
 
 /* Files include */
-#include "platform.h"
+#include "application.h"
 #include "mm32f0160_it.h"
+extern volatile FLAG8 sys_flag;
 
 /**
-  * @addtogroup MM32F0160_LibSamples
-  * @{
-  */
+ * @addtogroup MM32F0160_LibSamples
+ * @{
+ */
 
 /**
-  * @addtogroup UART
-  * @{
-  */
+ * @addtogroup UART
+ * @{
+ */
 
 /**
-  * @addtogroup UART_DMA_Interrupt
-  * @{
-  */
+ * @addtogroup UART_DMA_Interrupt
+ * @{
+ */
 
 /* Private typedef ****************************************************************************************************/
 
@@ -59,101 +60,98 @@
 /* Private functions **************************************************************************************************/
 
 /***********************************************************************************************************************
-  * @brief  This function handles NMI exception
-  * @note   none
-  * @param  none
-  * @retval none
-  *********************************************************************************************************************/
+ * @brief  This function handles NMI exception
+ * @note   none
+ * @param  none
+ * @retval none
+ *********************************************************************************************************************/
 void NMI_Handler(void)
 {
 }
 
 /***********************************************************************************************************************
-  * @brief  This function handles Hard Fault exception
-  * @note   none
-  * @param  none
-  * @retval none
-  *********************************************************************************************************************/
+ * @brief  This function handles Hard Fault exception
+ * @note   none
+ * @param  none
+ * @retval none
+ *********************************************************************************************************************/
 void HardFault_Handler(void)
 {
-    /* Go to infinite loop when Hard Fault exception occurs */
-    while (1)
-    {
-    }
+  /* Go to infinite loop when Hard Fault exception occurs */
+  while (1)
+  {
+  }
 }
 
 /***********************************************************************************************************************
-  * @brief  This function handles SVCall exception
-  * @note   none
-  * @param  none
-  * @retval none
-  *********************************************************************************************************************/
+ * @brief  This function handles SVCall exception
+ * @note   none
+ * @param  none
+ * @retval none
+ *********************************************************************************************************************/
 void SVC_Handler(void)
 {
 }
 
 /***********************************************************************************************************************
-  * @brief  This function handles PendSVC exception
-  * @note   none
-  * @param  none
-  * @retval none
-  *********************************************************************************************************************/
+ * @brief  This function handles PendSVC exception
+ * @note   none
+ * @param  none
+ * @retval none
+ *********************************************************************************************************************/
 void PendSV_Handler(void)
 {
 }
 
 /***********************************************************************************************************************
-  * @brief  This function handles SysTick Handler
-  * @note   none
-  * @param  none
-  * @retval none
-  *********************************************************************************************************************/
+ * @brief  This function handles SysTick Handler
+ * @note   none
+ * @param  none
+ * @retval none
+ *********************************************************************************************************************/
 void SysTick_Handler(void)
 {
-    if (0 != PLATFORM_DelayTick)
-    {
-        PLATFORM_DelayTick--;
-    }
+  SysTickCount++;
+  sys_flag.mask = 0xff;
 }
 
 /***********************************************************************************************************************
-  * @brief  This function handles DMA1_Channel4_7 Handler
-  * @note   none
-  * @param  none
-  * @retval none
-  *********************************************************************************************************************/
+ * @brief  This function handles DMA1_Channel4_7 Handler
+ * @note   none
+ * @param  none
+ * @retval none
+ *********************************************************************************************************************/
 void DMA1_Channel4_7_IRQHandler(void)
 {
-    if (RESET != DMA_GetITStatus(DMA1_IT_TC4))
-    {
-        DMA_Cmd(DMA1_Channel4, DISABLE);
+  if (RESET != DMA_GetITStatus(DMA1_IT_TC4))
+  {
+    DMA_Cmd(DMA1_Channel4, DISABLE);
 
- //       UART_TX_DMA_InterruptFlag = 1;
+    //       UART_TX_DMA_InterruptFlag = 1;
 
-        DMA_ClearITPendingBit(DMA1_IT_TC4);
-    }
+    DMA_ClearITPendingBit(DMA1_IT_TC4);
+  }
 
-    if (RESET != DMA_GetITStatus(DMA1_IT_TC5))
-    {
-        DMA_Cmd(DMA1_Channel5, DISABLE);
+  if (RESET != DMA_GetITStatus(DMA1_IT_TC5))
+  {
+    DMA_Cmd(DMA1_Channel5, DISABLE);
 
-//        UART_RX_DMA_InterruptFlag = 1;
+    //        UART_RX_DMA_InterruptFlag = 1;
 
-        DMA_ClearITPendingBit(DMA1_IT_TC5);
-    }
+    DMA_ClearITPendingBit(DMA1_IT_TC5);
+  }
 }
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /**
-  * @}
-  */
+ * @}
+ */
 
 /********************************************** (C) Copyright MindMotion **********************************************/
-

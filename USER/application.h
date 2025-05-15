@@ -27,8 +27,8 @@
 #include "APP/app_uart.h"
 
 // ////Ó¦ÓÃ²ã°üº¬
-#include "APP/app_comm.h"
-#include "USER/app_config.h"
+#include "app_comm.h"
+#include "app_config.h"
 //#include "user/app.h"
 
 #endif

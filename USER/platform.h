@@ -70,13 +70,8 @@ extern "C" {
 /* Exported variables *************************************************************************************************/
 #undef EXTERN
 
-#ifdef _PLATFORM_C_
-#define EXTERN
-#else
-#define EXTERN extern
-#endif
 
-EXTERN volatile uint32_t PLATFORM_DelayTick;
+extern volatile uint32_t SysTickCount;
 
 /* Exported functions *************************************************************************************************/
 void PLATFORM_DelayMS(uint32_t Millisecond);

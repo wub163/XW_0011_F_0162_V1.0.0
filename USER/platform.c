@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include "platform.h"
 
-volatile uint32_t PLATFORM_DelayTick;
+volatile uint32_t SysTickCount = 0;
 /***********************************************************************************************************************
  * @brief  Initialize SysTick for delay function
  * @note   none
@@ -36,20 +36,6 @@ void PLATFORM_InitDelay(void)
   NVIC_SetPriority(SysTick_IRQn, 0x0);
 }
 
-/***********************************************************************************************************************
- * @brief  Millisecond delay
- * @note   none
- * @param  Millisecond: delay time unit
- * @retval none
- *********************************************************************************************************************/
-void PLATFORM_DelayMS(uint32_t Millisecond)
-{
-  PLATFORM_DelayTick = Millisecond;
-
-  while (0 != PLATFORM_DelayTick)
-  {
-  }
-}
 
 /***********************************************************************************************************************
  * @brief  Initialize console for printf

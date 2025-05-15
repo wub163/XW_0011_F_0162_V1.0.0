@@ -656,7 +656,7 @@
                 </option>
                 <option>
                     <name>OOCOutputFile</name>
-                    <state>UART_DMA_Interrupt.srec</state>
+                    <state>XW_0011_F_V1.0.0.srec</state>
                 </option>
                 <option>
                     <name>OOCCommandLineProducer</name>
@@ -711,7 +711,7 @@
                 </option>
                 <option>
                     <name>IlinkOutputFile</name>
-                    <state>UART_DMA_Interrupt.out</state>
+                    <state>XW0011.out</state>
                 </option>
                 <option>
                     <name>IlinkDebugInfoEnable</name>
@@ -771,7 +771,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfOverride</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
@@ -954,11 +954,11 @@
                 </option>
                 <option>
                     <name>IlinkStackAnalysisEnable</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IlinkStackControlFile</name>
-                    <state></state>
+                    <state>G:\XW0011\work\IAR\XW_0011_F_0162_V1.0.0\EWARM\a.txt</state>
                 </option>
                 <option>
                     <name>IlinkStackCallGraphFile</name>
