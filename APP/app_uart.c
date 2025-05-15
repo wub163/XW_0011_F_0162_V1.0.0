@@ -10,7 +10,7 @@
 
 /* Files include */
 #include <stdio.h>
-#include "platform.h"
+#include "application.h"
 #include "app_uart.h"
 
 // UART_RX_S RxData;		   // 接收数据缓存区

@@ -38,18 +38,35 @@ extern "C" {
 #include "hal_conf.h"
 
 /* Exported types *****************************************************************************************************/
-typedef enum
-{
-    LED1,
-    LED2,
-    LED3,
-    LED4
-} LEDn_TypeDef;
+// #define D2 GPIOD, GPIO_Pin_5
+// #define D3 GPIOA, GPIO_Pin_1
+#define D2 GPIOC, GPIO_Pin_9
+#define D3 GPIOC, GPIO_Pin_8
+#define ZKRE GPIOA, GPIO_Pin_6
+#define FKRE GPIOB, GPIO_Pin_2
+#define DJRE GPIOB, GPIO_Pin_5
+#define ZKTX01 GPIOA, GPIO_Pin_7
+#define FKTX01 GPIOB, GPIO_Pin_1
+#define FKRX01 GPIOB, GPIO_Pin_0
+
+// #define K1 GPIOA, GPIO_Pin_0
+#define K1 GPIOC, GPIO_Pin_11
+#define DJID GPIOB, GPIO_Pin_8
+#define IDX_8 GPIOA, GPIO_Pin_8
+#define IDX_4 GPIOA, GPIO_Pin_9
+#define IDX_2 GPIOA, GPIO_Pin_10
+#define IDX_1 GPIOA, GPIO_Pin_11
+#define IDY_8 GPIOA, GPIO_Pin_12
+#define IDY_4 GPIOA, GPIO_Pin_15
+#define IDY_2 GPIOB, GPIO_Pin_3
+#define IDY_1 GPIOB, GPIO_Pin_4
 
 /* Exported constants *************************************************************************************************/
 
 /* Exported macro *****************************************************************************************************/
-
+#define out(a,b) GPIO_WriteBit(a, (BitAction)b) 
+#define in(a) GPIO_ReadInputDataBit(a)
+#define tog(a) GPIO_WriteBit(a, (BitAction)!GPIO_ReadOutputDataBit(a))
 /* Exported variables *************************************************************************************************/
 #undef EXTERN
 
@@ -63,8 +80,6 @@ EXTERN volatile uint32_t PLATFORM_DelayTick;
 
 /* Exported functions *************************************************************************************************/
 void PLATFORM_DelayMS(uint32_t Millisecond);
-void PLATFORM_LED_Enable(LEDn_TypeDef LEDn, FunctionalState State);
-void PLATFORM_LED_Toggle(LEDn_TypeDef LEDn);
 void PLATFORM_Init(void);
 
 #ifdef __cplusplus

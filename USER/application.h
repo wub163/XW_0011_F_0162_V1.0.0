@@ -13,6 +13,7 @@
 
 // µ×²ã¿â°üº¬
 #include "mm32f0160.h"
+#include "platform.h"
 // #include "../SC8F093_Drive/Include.h"
 // #include "../SC8F093_Drive/SC8F093_EEPROM_Drive.h"
 // #include "../SC8F093_Drive/SC8F093_UART_Drive.h"

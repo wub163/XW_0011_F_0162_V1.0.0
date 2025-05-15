@@ -30,7 +30,7 @@
 #define _MAIN_C_
 
 /* Files include */
-#include "platform.h"
+#include "application.h"
 #include "main.h"
 
 /**
