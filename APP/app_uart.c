@@ -79,15 +79,59 @@ void UART_Isr(void)
 {
 }
 
+/***********************************************
+函数名称：void Uart1_Init(uint32_t Baudrate)
+函数功能：UART1初始化
+入口参数：无
+出口参数：无
+备注：TX1 PB6,RX1 PB7, AF0
+************************************************/
+void Uart1_Init(uint32_t Baudrate)
+{
+    GPIO_InitTypeDef GPIO_InitStruct;
+    UART_InitTypeDef UART_InitStruct;
+
+    RCC_APB2PeriphClockCmd(RCC_APB2ENR_UART1, ENABLE);
+
+    UART_StructInit(&UART_InitStruct);
+    UART_InitStruct.BaudRate      = Baudrate;
+    UART_InitStruct.WordLength    = UART_WordLength_8b;
+    UART_InitStruct.StopBits      = UART_StopBits_1;
+    UART_InitStruct.Parity        = UART_Parity_No;
+    UART_InitStruct.HWFlowControl = UART_HWFlowControl_None;
+    UART_InitStruct.Mode          = UART_Mode_Rx | UART_Mode_Tx;
+    UART_Init(UART1, &UART_InitStruct);
+
+    UART_DMACmd(UART1, ENABLE);
+
+    RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOB, ENABLE);
+
+    GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_0);
+    GPIO_PinAFConfig(GPIOB, GPIO_PinSource7, GPIO_AF_0);
+
+    GPIO_StructInit(&GPIO_InitStruct);
+    GPIO_InitStruct.GPIO_Pin   = GPIO_Pin_6;
+    GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_InitStruct.GPIO_Mode  = GPIO_Mode_AF_PP;
+    GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    GPIO_StructInit(&GPIO_InitStruct);
+    GPIO_InitStruct.GPIO_Pin  = GPIO_Pin_7;
+    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_OD;
+    GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+    UART_Cmd(UART1, ENABLE);
+}
 
 
-/***********************************************************************************************************************
-  * @brief
-  * @note   none
-  * @param  none
-  * @retval none
-  *********************************************************************************************************************/
-void UART_Configure(uint32_t Baudrate)
+/***********************************************
+函数名称：void Uart2_Init(uint32_t Baudrate)
+函数功能：UART2初始化
+入口参数：无
+出口参数：无
+备注：TX2 PA2,RX2 PA3, AF1
+************************************************/
+void Uart2_Init(uint32_t Baudrate)
 {
     GPIO_InitTypeDef GPIO_InitStruct;
     UART_InitTypeDef UART_InitStruct;
@@ -118,7 +162,7 @@ void UART_Configure(uint32_t Baudrate)
 
     GPIO_StructInit(&GPIO_InitStruct);
     GPIO_InitStruct.GPIO_Pin  = GPIO_Pin_3;
-    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
+    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_OD;
     GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     UART_Cmd(UART2, ENABLE);
@@ -241,4 +285,12 @@ void UART_DMA_Interrupt_Sample(void)
             UART_RxData_DMA_Interrupt(Buffer, 10);
         }
     }
+}
+
+void Uart_Init(void)
+{
+  Uart1_Init(1500000);
+  Uart2_Init(115200);
+
+
 }

@@ -57,6 +57,8 @@ void UART_DMA_Interrupt_Sample(void);
     void UART_Process(void);  // 中断方式发送协议数据
     void Send_TX_int(void);   // 反馈包发送函数
 
+    void Uart_Init(void);   //通讯端口初始化
+
 #ifdef __cplusplus
 }
 #endif /* extern "C" */

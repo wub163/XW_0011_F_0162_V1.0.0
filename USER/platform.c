@@ -37,41 +37,6 @@ void PLATFORM_InitDelay(void)
 }
 
 
-/***********************************************************************************************************************
- * @brief  Initialize console for printf
- * @note   none
- * @param  Baudrate : UART1 communication baudrate
- * @retval none
- *********************************************************************************************************************/
-void PLATFORM_InitConsole(uint32_t Baudrate)
-{
-  GPIO_InitTypeDef GPIO_InitStruct;
-  UART_InitTypeDef UART_InitStruct;
-
-  RCC_APB2PeriphClockCmd(RCC_APB2ENR_UART1, ENABLE);
-
-  UART_StructInit(&UART_InitStruct);
-  UART_InitStruct.BaudRate = Baudrate;
-  UART_InitStruct.WordLength = UART_WordLength_8b;
-  UART_InitStruct.StopBits = UART_StopBits_1;
-  UART_InitStruct.Parity = UART_Parity_No;
-  UART_InitStruct.HWFlowControl = UART_HWFlowControl_None;
-  UART_InitStruct.Mode = UART_Mode_Tx;
-  UART_Init(UART1, &UART_InitStruct);
-
-  UART_Cmd(UART1, ENABLE);
-
-  RCC_AHBPeriphClockCmd(RCC_AHBENR_GPIOB, ENABLE);
-
-  GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_0);
-
-  GPIO_StructInit(&GPIO_InitStruct);
-  GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6;
-  GPIO_InitStruct.GPIO_Speed = GPIO_Speed_50MHz;
-  GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
-  GPIO_Init(GPIOB, &GPIO_InitStruct);
-}
-
 /***********************************************
 函数名称：void PLATFORM_IO_Init(void)
 函数功能：平台IO初始化，按键，指示灯，模块控制线
@@ -115,7 +80,7 @@ void PLATFORM_IO_Init(void)
   GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
   GPIO_Init(GPIOC, &GPIO_InitStruct);
 //=================================
-  GPIO_InitStruct.GPIO_Pin = GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12| GPIO_Pin_15;
+  GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_8 | GPIO_Pin_9 | GPIO_Pin_10 | GPIO_Pin_11 | GPIO_Pin_12| GPIO_Pin_15;
   GPIO_InitStruct.GPIO_Speed = GPIO_Speed_10MHz;
   GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
   GPIO_Init(GPIOA, &GPIO_InitStruct);
@@ -125,22 +90,22 @@ void PLATFORM_IO_Init(void)
   GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;
   GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-out(D2, Bit_SET);
-out(D3, Bit_SET);
-out(D2, Bit_RESET);
-out(D3, Bit_RESET);
-tog(D2);
-tog(D2);
-tog(D3);
-tog(D3);
+OUT(D2, Bit_SET);
+OUT(D3, Bit_SET);
+OUT(D2, Bit_RESET);
+OUT(D3, Bit_RESET);
+TOG(D2);
+TOG(D2);
+TOG(D3);
+TOG(D3);
 
 
-out(ZKRE, Bit_SET);
-out(FKRE, Bit_SET);
-out(DJRE, Bit_SET);
-out(ZKTX01, Bit_SET);
-out(FKTX01, Bit_SET);
-out(FKRX01, Bit_SET);
+OUT(ZKRE, Bit_SET);
+OUT(FKRE, Bit_SET);
+OUT(DJRE, Bit_SET);
+OUT(ZKTX01, Bit_SET);
+OUT(FKTX01, Bit_SET);
+OUT(FKRX01, Bit_SET);
 }
 
 
@@ -208,11 +173,12 @@ void PLATFORM_PrintInfo(void)
  *********************************************************************************************************************/
 void PLATFORM_Init(void)
 {
-  PLATFORM_InitDelay();
+  PLATFORM_InitDelay(); //系统定时器配置
 
-  PLATFORM_InitConsole(115200);
+  Uart_Init();
 
   PLATFORM_IO_Init();
 
   // PLATFORM_PrintInfo();
 }
+

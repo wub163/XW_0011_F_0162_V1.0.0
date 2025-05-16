@@ -6,9 +6,9 @@
 
 --plugin="D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\bin\armbat.dll" 
 
---device_macro="D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\config\debugger\MindMotion\MM32F0160\MM32F0163D\MM32F0163D.dmac" 
+--device_macro="D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\config\debugger\MindMotion\MM32F0160\MM32F0162D\MM32F0162D.dmac" 
 
---flash_loader="D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\config\flashloader\MindMotion\MM32F0160\MM32F0163D\MM32F0163D.board" 
+--flash_loader="D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\config\flashloader\MindMotion\MM32F0160\MM32F0162D\MM32F0162D.board" 
 
 
 

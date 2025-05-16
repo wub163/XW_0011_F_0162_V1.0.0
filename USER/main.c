@@ -90,13 +90,15 @@ int main(void)
     {
     if (f_systick_bad)continue;	   // 如果系统循环参数失效，跳过本次循环
       f_moto_loop = 0; // 清除时钟标志位
+      OUT(D2,IN(K1));
     }
 
     if (((SysTickCount % 100) == 0) && (f_uart_loop)) // 20ms处理一次位置反馈任务
     {
     if (f_systick_bad)continue;	   // 如果系统循环参数失效，跳过本次循环
       f_uart_loop = 0; // 清除时钟标志位
-      tog(D3);
+      TOG(D3);
+      UART_SendData(UART1, 0x18);
     }
 
     if (((SysTickCount % 500) == 0) && (f_led_loop)) // 20ms处理一次位置反馈任务
@@ -104,7 +106,8 @@ int main(void)
     if (f_systick_bad)continue;	   // 如果系统循环参数失效，跳过本次循环
       f_led_loop = 0; // 清除时钟标志位
 
-      tog(D2);
+      TOG(D2);
+      UART_SendData(UART2, 0x28);  
     }
   }
 }

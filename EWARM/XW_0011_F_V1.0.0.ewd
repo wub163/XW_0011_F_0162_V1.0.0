@@ -44,7 +44,7 @@
                 </option>
                 <option>
                     <name>MemFile</name>
-                    <state>$TOOLKIT_DIR$\CONFIG\debugger\MindMotion\MM32F0160\MM32F0163D\MM32F0163D.ddf</state>
+                    <state>$TOOLKIT_DIR$\CONFIG\debugger\MindMotion\MM32F0160\MM32F0162D\MM32F0162D.ddf</state>
                 </option>
                 <option>
                     <name>RunToEnable</name>
@@ -112,7 +112,7 @@
                 </option>
                 <option>
                     <name>FlashLoadersV3</name>
-                    <state>$TOOLKIT_DIR$\config\flashloader\MindMotion\MM32F0160\MM32F0163D\MM32F0163D.board</state>
+                    <state>$TOOLKIT_DIR$\config\flashloader\MindMotion\MM32F0160\MM32F0162D\MM32F0162D.board</state>
                 </option>
                 <option>
                     <name>OCImagesSuppressCheck1</name>
@@ -140,7 +140,7 @@
                 </option>
                 <option>
                     <name>OverrideDefFlashBoard</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>OCImagesOffset1</name>
@@ -292,7 +292,7 @@
                 <option>
                     <name>CMSISDAPResetList</name>
                     <version>1</version>
-                    <state>10</state>
+                    <state>9</state>
                 </option>
                 <option>
                     <name>CMSISDAPHWResetDuration</name>
@@ -304,7 +304,7 @@
                 </option>
                 <option>
                     <name>CMSISDAPDoLogfile</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CMSISDAPLogFile</name>
@@ -312,7 +312,7 @@
                 </option>
                 <option>
                     <name>CMSISDAPInterfaceRadio</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>CMSISDAPInterfaceCmdLine</name>
@@ -421,7 +421,7 @@
                 </option>
                 <option>
                     <name>OCProbeCfgOverride</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>OCProbeConfig</name>
@@ -433,7 +433,7 @@
                 </option>
                 <option>
                     <name>CMSISDAPSelectedCPUBehaviour</name>
-                    <state>0</state>
+                    <state></state>
                 </option>
                 <option>
                     <name>ICpuName</name>

@@ -6,11 +6,11 @@
 
 "-p" 
 
-"D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\CONFIG\debugger\MindMotion\MM32F0160\MM32F0163D\MM32F0163D.ddf" 
+"D:\Program Files (x86)\IAR Systems\Embedded Workbench 8.2\arm\CONFIG\debugger\MindMotion\MM32F0160\MM32F0162D\MM32F0162D.ddf" 
 
 "--semihosting" 
 
-"--device=MM32F0163D7PV" 
+"--device=MM32F0162D4QV" 
 
 "--drv_communication=USB0" 
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flash_board>
+    <pass>
+        <loader>$TOOLKIT_DIR$\config\flashloader\MindMotion\MM32F0160\MM32F0162D\MM32F0162D.flash</loader>
+        <range>CODE 0x8000000 0x801ffff</range>
+    </pass>
+</flash_board>
