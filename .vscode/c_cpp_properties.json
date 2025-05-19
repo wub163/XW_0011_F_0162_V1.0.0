@@ -17,8 +17,8 @@
                 "${workspaceFolder}/USER",
                 "${workspaceFolder}/APP"
             ],
-            "intelliSenseMode": "windows-msvc-x64",
-            "compilerPath": "C:/path/to/your/compiler"
+ //           "intelliSenseMode": "windows-msvc-x64"
+ //           "compilerPath": "${workspaceFolder}/compiler"
         }
     ],
     "version": 4

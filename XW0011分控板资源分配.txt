@@ -40,17 +40,17 @@ ID≈‰÷√
 ∆Ù”√Õ‚…Ë£∫
 
 LPUART	(38.4Kbps)
- TX			: PA4
- RX			: PA5
+ TX			: PA4		DMA1
+ RX			: PA5		DMA2
 
 UART1	(38.4Kbps)
- TX			: PB6
- RX			: PB7
+ TX			: PB6		DMA4
+ RX			: PB7		DMA5
  RE			: PB5
 
 UART2	(5Mbps)
- TX			: PA2
- RX			: PA3
+ TX			: PA2		DMA7
+ RX			: PA3		DMA6
 
 GPIO
  KEY		: RA0

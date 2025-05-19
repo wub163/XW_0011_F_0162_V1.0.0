@@ -182,3 +182,63 @@ void PLATFORM_Init(void)
   // PLATFORM_PrintInfo();
 }
 
+//	uint8_t status;
+//	status = FLASH_CheckReadProtect();
+//    if (status == 0)                   //not protect
+//    {
+//        FLASH_Unlock();
+//        status = FLASH_EnableReadProtect();
+//        FLASH_Lock();
+//    }	
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief  This function is check the read protect status.
+/// @note   None.
+/// @param  None.
+/// @retval protectstatus.
+////////////////////////////////////////////////////////////////////////////////
+static uint32_t FLASH_CheckReadProtect(void)
+{
+    uint32_t protectstatus = 0;
+
+    if ((FLASH->OBR & 0x02) != (uint32_t)RESET)
+    {
+        // Read Protect on 0x1FFFF800 is set
+        protectstatus = 1;
+    }
+
+    return (protectstatus);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+/// @brief  This function is portect Full main Flash enable.
+/// @note   None.
+/// @param  None.
+/// @retval ret.
+////////////////////////////////////////////////////////////////////////////////
+//
+static int32_t FLASH_EnableReadProtect(void)
+{
+    FLASH_Status status = FLASH_COMPLETE;
+    int32_t ret = 0;
+
+    status = FLASH_EraseOptionBytes();
+
+    if (status != FLASH_COMPLETE)
+    {
+        ret = 1;
+    }
+
+    status = FLASH_ProgramOptionHalfWord(0x1ffff800, 0x807F);
+
+    if (status != FLASH_COMPLETE)
+    {
+        ret = 1;
+    }
+
+//    printf("The read data:0x%x\r\n", (*(volatile uint32_t *)0x1ffff800));
+
+//    printf("Please repower the MCU\r\n");
+
+    return (ret);
+}

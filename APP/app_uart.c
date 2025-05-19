@@ -174,7 +174,7 @@ void Uart2_Init(uint32_t Baudrate)
   * @param  none
   * @retval none
   *********************************************************************************************************************/
-void UART_RxData_DMA_Interrupt(uint8_t *Buffer, uint8_t Length)
+void UART2_RxData_DMA_Interrupt(uint8_t *Buffer, uint8_t Length)
 {
     DMA_InitTypeDef  DMA_InitStruct;
     NVIC_InitTypeDef NVIC_InitStruct;
@@ -217,7 +217,7 @@ void UART_RxData_DMA_Interrupt(uint8_t *Buffer, uint8_t Length)
   * @param  none
   * @retval none
   *********************************************************************************************************************/
-void UART_TxData_DMA_Interrupt(uint8_t *Buffer, uint8_t Length)
+void UART2_TxData_DMA_Interrupt(uint8_t *Buffer, uint8_t Length)
 {
     DMA_InitTypeDef  DMA_InitStruct;
     NVIC_InitTypeDef NVIC_InitStruct;
@@ -260,37 +260,36 @@ void UART_TxData_DMA_Interrupt(uint8_t *Buffer, uint8_t Length)
   * @param  none
   * @retval none
   *********************************************************************************************************************/
-void UART_DMA_Interrupt_Sample(void)
-{
-    uint8_t Buffer[10];
+// void UART_DMA_Interrupt_Sample(void)
+// {
+//     uint8_t Buffer[10];
 
-    printf("\r\nTest %s", __FUNCTION__);
+//     printf("\r\nTest %s", __FUNCTION__);
 
-    UART_Configure(115200);
+//     UART_Configure(115200);
 
-    UART_RxData_DMA_Interrupt(Buffer, 10);
+//     UART_RxData_DMA_Interrupt(Buffer, 10);
 
-    printf("\r\nSend 10 bytes to UART every time");
+//     printf("\r\nSend 10 bytes to UART every time");
 
-    while (1)
-    {
-        if (0 != UART_RX_DMA_InterruptFlag)
-        {
-            UART_TxData_DMA_Interrupt(Buffer, 10);
+//     while (1)
+//     {
+//         if (0 != UART_RX_DMA_InterruptFlag)
+//         {
+//             UART_TxData_DMA_Interrupt(Buffer, 10);
 
-            while (0 == UART_TX_DMA_InterruptFlag)
-            {
-            }
+//             while (0 == UART_TX_DMA_InterruptFlag)
+//             {
+//             }
 
-            UART_RxData_DMA_Interrupt(Buffer, 10);
-        }
-    }
-}
+//             UART_RxData_DMA_Interrupt(Buffer, 10);
+//         }
+//     }
+// }
 
 void Uart_Init(void)
 {
   Uart1_Init(1500000);
   Uart2_Init(115200);
-
 
 }
