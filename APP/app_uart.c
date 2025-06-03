@@ -289,7 +289,7 @@ void UART2_TxData_DMA_Interrupt(uint8_t *Buffer, uint8_t Length)
 
 void Uart_Init(void)
 {
-  Uart1_Init(1500000);
-  Uart2_Init(115200);
+  Uart1_Init(38400);
+  Uart2_Init(38400);
 
 }

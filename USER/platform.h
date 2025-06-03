@@ -38,12 +38,12 @@ extern "C" {
 #include "hal_conf.h"
 
 /* Exported types *****************************************************************************************************/
-#define D2 GPIOC, GPIO_Pin_9
-#define D3 GPIOC, GPIO_Pin_8
-#define K1 GPIOC, GPIO_Pin_11
+//#define D2 GPIOC, GPIO_Pin_9
+//#define D3 GPIOC, GPIO_Pin_8
+//#define K1 GPIOC, GPIO_Pin_11
   
-// #define D2 GPIOD, GPIO_Pin_5
-// #define D3 GPIOA, GPIO_Pin_1
+ #define D2 GPIOD, GPIO_Pin_5
+ #define D3 GPIOA, GPIO_Pin_1
 #define ZKRE GPIOA, GPIO_Pin_6
 #define FKRE GPIOB, GPIO_Pin_2
 #define DJRE GPIOB, GPIO_Pin_5
@@ -51,7 +51,7 @@ extern "C" {
 #define FKTX01 GPIOB, GPIO_Pin_1
 #define FKRX01 GPIOB, GPIO_Pin_0
 
-// #define K1 GPIOA, GPIO_Pin_0
+ #define K1 GPIOA, GPIO_Pin_0
 #define DJID GPIOB, GPIO_Pin_8
 #define IDX_8 GPIOA, GPIO_Pin_8
 #define IDX_4 GPIOA, GPIO_Pin_9
